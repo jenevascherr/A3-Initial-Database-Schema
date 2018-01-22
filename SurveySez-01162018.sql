@@ -69,17 +69,14 @@ INSERT INTO srv_questions VALUES (NULL,1,'Favorite Toppings?','We like chocolate
 
 /*
 Add additional tables here
-
-
-
 */
 
 
-CREATE TABLE srv_admin(
+CREATE TABLE srv_admins(
 AdminID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 SurveyID INT UNSIGNED DEFAULT 0,
-FirstName TEXT DEFAULT '',
 LastName TEXT DEFAULT '',
+FirstName TEXT DEFAULT '',
 Email TEXT DEFAULT '',
 PRIMARY KEY (AdminID),
 INDEX SurveyID_index(SurveyID),
@@ -87,18 +84,17 @@ FOREIGN KEY (SurveyID) REFERENCES srv_surveys(SurveyID) ON DELETE CASCADE
 )ENGINE=INNODB;
 
 
-CREATE TABLE srv_customer(
+CREATE TABLE srv_customers(
 CustomerID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 SurveyID INT UNSIGNED DEFAULT 0,
-FirstName TEXT DEFAULT '',
 LastName TEXT DEFAULT '',
+FirstName TEXT DEFAULT '',
 Email TEXT DEFAULT '',
 Date TIMESTAMP DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (CustomerID),
 INDEX SurveyID_index(SurveyID),
 FOREIGN KEY (SurveyID) REFERENCES srv_surveys(SurveyID) ON DELETE CASCADE
 )ENGINE=INNODB;
-
 
 
 SET foreign_key_checks = 1; #turn foreign key check back on
